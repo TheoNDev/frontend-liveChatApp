@@ -1,0 +1,63 @@
+@use "./global/mixins.scss" as m;
+@use "./global/variables.scss" as v;
+
+.forms-signup {
+  @include m.flex(column, center, center);
+
+  width: 50%;
+  height: 500px;
+  margin: 20% auto;
+  border-radius: 10px;
+  background-color: rgba(211, 211, 211, 0.185);
+  &__title {
+    font-size: 2rem;
+  }
+  &__form {
+    height: 400px;
+    @include m.flex(column, center, center);
+    width: 100%;
+    &__error {
+    }
+    &__input {
+      width: 60%;
+
+      height: 30px;
+      border-radius: 5px;
+      border: 1px solid black;
+      padding: 0.5rem;
+      margin: 10px 0;
+      font-size: 1rem;
+    }
+    &__password {
+      @include m.flex(row, center, center);
+      width: 100%;
+      margin: 0 0 0 38px;
+      &__input {
+        width: 60%;
+        height: 30px;
+        border-radius: 5px;
+        border: 1px solid black;
+        padding: 0.5rem;
+        margin: 10px 0;
+        font-size: 1rem;
+      }
+      &__icon {
+        font-size: 1.2rem;
+        margin: 0 10px;
+        cursor: pointer;
+      }
+    }
+    &__btn {
+      width: 60%;
+      height: 2.2rem;
+      border-radius: 5px;
+      border: 1px solid black;
+      padding: 0.5rem;
+      margin: 20px 0;
+      font-size: 1rem;
+      background-color: black;
+      color: white;
+      cursor: pointer;
+    }
+  }
+}

@@ -1,0 +1,36 @@
+// src/styles/mixins.scss
+
+
+// Flexbox mixin
+@mixin flex($direction: row, $justify: flex-start, $align: stretch) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+
+  @mixin horScroll($gap: 0.5rem) {
+  display: flex; // Gör barnen till flexbox-element
+  overflow-x: auto; // Tillåt horisontell scroll
+  gap: $gap; // Lägger till avstånd mellan korten
+  padding: 1rem; // Undvik att scrollbaren överlappar innehållet
+  scroll-snap-type: x mandatory; // Valfritt: Snap-effekt för scroll
+  scrollbar-color: black transparent;
+}
+
+@mixin border($direction: all, $width: 1px, $color: black, $style: solid) {
+  @if $direction == all {
+    border: $width $style $color;
+  } @else if $direction == top {
+    border-top: $width $style $color;
+  } @else if $direction == bottom {
+    border-bottom: $width $style $color;
+  } @else if $direction == left {
+    border-left: $width $style $color;
+  } @else if $direction == right {
+    border-right: $width $style $color;
+  } @else {
+    @warn "Ogiltig riktning: #{$direction}. Använd 'all', 'top', 'bottom', 'left' eller 'right'.";
+  }
+}

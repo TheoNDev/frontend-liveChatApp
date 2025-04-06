@@ -1,0 +1,49 @@
+@use "./global/mixins.scss" as m;
+
+.relative-div {
+  position: relative;
+  width: 0;
+  height: 0;
+  .group-settings {
+    position: absolute;
+    width: 15rem;
+    background-color: black;
+    color: white;
+    right: -17.5rem;
+    top: -1.5rem;
+    z-index: 10;
+    padding: 1rem;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    &__options {
+      &__option {
+        cursor: pointer;
+      }
+      &__members {
+        &__member {
+          @include m.flex(row, space-between);
+          &__name {
+          }
+          &__status {
+          }
+        }
+      }
+      &__change-name {
+        &__input {
+        }
+        &__btns {
+          &__btn {
+          }
+        }
+      }
+    }
+    &__confirm {
+      &__text {
+      }
+      &__btns {
+        &__btn {
+        }
+      }
+    }
+  }
+}

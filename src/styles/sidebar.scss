@@ -1,0 +1,88 @@
+@use "./global/mixins.scss" as m;
+@use "./global/variables.scss" as v;
+
+.sidebar {
+  @include m.flex(column);
+  background-color: lightgrey;
+  &__header {
+    @include m.flex(column, center);
+    margin-bottom: 20px;
+    background-color: gray;
+    height: 77px;
+    &__top {
+      @include m.flex(row, space-evenly, flex-end);
+      height: 30px;
+      &__title {
+        margin: 0;
+        font-size: 1.2rem;
+        cursor: pointer;
+      }
+    }
+    &__underline {
+      position: absolute;
+      background-color: orange;
+      width: 50px;
+      height: 2px;
+      transition: all 0.2s ease;
+    }
+  }
+  .create-group {
+    width: 100%;
+    @include m.flex(column, center, center);
+    &__btn {
+      width: 90%;
+      height: 50px;
+      font-size: 1.2rem;
+    }
+    &__input {
+      height: 25px;
+      width: 85%;
+    }
+  }
+  &__chats {
+    @include m.flex(column);
+    &__chat {
+      @include m.flex(row, flex-end, center);
+      background-color: rgb(172, 172, 172);
+      margin: 10px;
+      height: 50px;
+      border-radius: 10px;
+
+      &__link {
+        margin: 10px;
+        text-decoration: none;
+        color: black;
+        font-size: 1.1rem;
+        cursor: pointer;
+        margin-right: auto;
+      }
+      &__setting {
+        @include m.flex(row, space-evenly, center);
+        width: 20px;
+        height: 100%;
+        margin-right: 10px;
+        cursor: pointer;
+        .dot {
+          width: 5px;
+          height: 5px;
+          background-color: black;
+          border-radius: 50%;
+        }
+        .dot1 {
+          transition: transform 0.1s ease 0;
+        }
+        .dot2 {
+          transition: transform 0.1s ease 0.01s;
+        }
+        .dot3 {
+          transition: transform 0.1s ease 0.02s;
+        }
+        &:hover {
+          .dot {
+            transform: translateY(-1px);
+          }
+        }
+      }
+    }
+  }
+}

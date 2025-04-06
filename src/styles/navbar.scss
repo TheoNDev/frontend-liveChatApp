@@ -1,0 +1,35 @@
+@use "./global/mixins.scss" as m;
+@use "./global/variables.scss" as v;
+
+.nav {
+  @include m.flex(row, space-between, center);
+  background-color: black;
+  color: white;
+  &__title {
+    margin: 0 1rem;
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: white;
+    user-select: none;
+  }
+  &__requests {
+    position: absolute;
+    top: 70px;
+    background-color: black;
+    padding: 1.2rem;
+    border-radius: 10px;
+    width: 20%;
+
+    &__header {
+      @include m.flex(row, space-evenly, center);
+
+      &__btn {
+        font-size: 1.2rem;
+        cursor: pointer;
+        user-select: none;
+      }
+    }
+    &__container {
+    }
+  }
+}

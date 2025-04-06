@@ -1,0 +1,122 @@
+@use "./global/mixins.scss" as m;
+@use "./global/variables.scss" as v;
+
+.chat {
+  @include m.flex(column, space-between);
+  width: 100%;
+  background-color: gray;
+  &__msgs {
+    overflow-y: auto;
+    width: 100%;
+    // @include m.flex(column);
+    display: flex;
+    flex-direction: column;
+
+    &__msg {
+      width: 100%;
+      padding: 0px;
+      margin: 0px 0px; // reduce vertical margin for better flow
+
+      &__content {
+        background-color: lightgray;
+        width: fit-content;
+        max-width: 60%;
+        border-radius: 20px;
+        padding: 10px;
+        margin: 10px 20px;
+      }
+
+      &__date {
+        font-size: 0.8rem;
+        text-align: center;
+      }
+    }
+
+    // Align the whole message block
+    .sent {
+      align-self: flex-end;
+
+      @include m.flex(column);
+      .chat__msgs__msg__content {
+        background-color: #007bff;
+        color: white;
+
+        align-self: flex-end;
+      }
+    }
+
+    .received {
+      align-self: flex-start;
+      @include m.flex(column);
+      .chat__msgs__msg__content {
+        background-color: #f1f1f1;
+        color: black;
+        align-self: start;
+      }
+    }
+  }
+  &__bottom {
+    @include m.flex(column, center, flex-start);
+    height: 100px;
+    width: 100%;
+    &__writing {
+      @include m.flex(row, center, center);
+      width: 100%;
+      &__form {
+        @include m.flex(row);
+        width: 100%;
+        &__input {
+          width: 90%;
+          height: 50px;
+          font-size: 1rem;
+          padding: 0 10px;
+          border: none;
+          border-top-left-radius: 20px;
+          border-bottom-left-radius: 20px;
+        }
+        &__btn {
+          height: 50px;
+          width: 100px;
+          padding: 0;
+          border: none;
+          border-top-right-radius: 20px;
+          border-bottom-right-radius: 20px;
+          font-size: 1.2rem;
+          cursor: pointer;
+        }
+      }
+    }
+    &__typing {
+      @include m.flex(row);
+      margin-left: 20px;
+      &__dot {
+        width: 10px;
+        height: 10px;
+        background-color: lightgray;
+        border-radius: 50%;
+        animation: typing 1s infinite;
+      }
+      .one {
+        animation-delay: 0;
+      }
+      .two {
+        animation-delay: 0.1s;
+      }
+      .three {
+        animation-delay: 0.2s;
+      }
+    }
+  }
+}
+
+@keyframes typing {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
