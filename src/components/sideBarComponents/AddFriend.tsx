@@ -23,17 +23,30 @@ const AddFriend = () => {
         }
     }
     return (
-        <div>
-            <p onClick={() => setShowAddFriend(true)}>+</p>
+        <div className="add-friend">
+            {!showAddFriend &&
+                <button
+                    className="add-friend__btn"
+                    onClick={() => setShowAddFriend(true)}>Add Friend</button>
+            }
             {showAddFriend &&
-                <div>
+                <div className="add-friend__container">
                     <input
+                        className="add-friend__container__input"
                         type="text"
                         placeholder="enter username"
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}
                     />
-                    <button onClick={handleAddFriend}>add Friend</button>
+                    <div className="add-friend__container__btns">
+                        <button
+                            className="add-friend__container__btns__btn"
+                            onClick={handleAddFriend}>add Friend</button>
+                        <button
+                            className="add-friend__container__btns__btn"
+                            onClick={() => setShowAddFriend(false)}>cancel</button>
+
+                    </div>
                 </div>
             }
         </div>

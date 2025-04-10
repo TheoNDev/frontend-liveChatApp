@@ -32,7 +32,7 @@ const ChatListItem = <T extends { id: number; name?: string; username?: string }
             )}
 
             {showSettings.show && showSettings.id === item.id && SettingsComponent && (
-                <SettingsComponent item={item} /> // ✅ Always passes `item`
+                <SettingsComponent item={item} />
             )}
         </div>
     );

@@ -19,10 +19,30 @@
     padding: 1.2rem;
     border-radius: 10px;
     width: 20%;
-
     &__header {
       @include m.flex(row, space-evenly, center);
+      .nav__header {
+        @include m.flex(column, center);
 
+        width: 100%;
+        &__top {
+          @include m.flex(row, space-evenly, flex-end);
+          height: 30px;
+          width: 100%;
+          &__title {
+            margin: 0;
+            font-size: 1.2rem;
+            cursor: pointer;
+          }
+        }
+        &__underline {
+          position: absolute;
+          background-color: orange;
+          width: 50px;
+          height: 2px;
+          transition: all 0.2s ease;
+        }
+      }
       &__btn {
         font-size: 1.2rem;
         cursor: pointer;

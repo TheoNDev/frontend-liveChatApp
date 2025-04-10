@@ -1,0 +1,25 @@
+.requests {
+  &__header {
+    &__select {
+      border: none;
+      background-color: black;
+      color: white;
+      option {
+      }
+    }
+  }
+  &__container {
+    &__sent {
+    }
+    &__received {
+    }
+    &__name {
+    }
+    &__user {
+    }
+    &__status {
+    }
+    &__btn {
+    }
+  }
+}

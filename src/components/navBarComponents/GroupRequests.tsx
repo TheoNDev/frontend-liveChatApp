@@ -1,6 +1,8 @@
 import { ChangeEvent, useEffect, useState } from "react";
 import axios from "../../utils/axios";
 import { useAuthContext } from "../../hooks/useAuthContext";
+import "../../styles/requests.scss";
+
 interface IRequests {
     group_id: number;
     group_name: string;
@@ -88,24 +90,27 @@ const GroupRequests = () => {
     }
 
     return (
-        <div>
-            <div>
-                <select value={requestsSelect} onChange={handleRequestSelect}>
+        <div className="requests">
+            <div className="requests__header">
+                <select
+                    className="requests__header__select"
+                    value={requestsSelect}
+                    onChange={handleRequestSelect}>
                     <option value="Received">Received</option>
                     <option value="Sent">Sent</option>
                 </select>
 
             </div>
-            <div>
+            <div className="requests__container">
                 {showRequestsSent ? (
                     fromUserError ? (
                         <p>{fromUserError}</p>
                     ) : (
                         requestsFromUser.map((request) => (
-                            <div key={request.group_id}>
-                                <p>{request.group_name}</p>
-                                <p>{request.receiver_username}</p>
-                                <p>{request.status}</p>
+                            <div key={request.group_id} className="requests__container__sent">
+                                <p className="requests__container__name">{request.group_name}</p>
+                                <p className="requests__container__user">{request.receiver_username}</p>
+                                <p className="requests__container__status">{request.status}</p>
                             </div>
                         ))
                     )
@@ -114,11 +119,19 @@ const GroupRequests = () => {
                         <p>{toUserError}</p>
                     ) : (
                         requestsToUser.map((request) => (
-                            <div key={request.group_id}>
-                                <p>{request.group_name}</p>
-                                <p>from: {request.sender_username}</p>
-                                <button onClick={() => handleAcceptRequest(request.sender_id!, request.group_id)}>accept</button>
-                                <button>deny</button>
+                            <div key={request.group_id} className="requests__container__received">
+                                <p
+                                    className="requests__container__received__name"
+                                >{request.group_name}</p>
+                                <p
+                                    className="requests__container__received__user"
+                                >from: {request.sender_username}</p>
+                                <button
+                                    className="requests__container__received__btn"
+                                    onClick={() => handleAcceptRequest(request.sender_id!, request.group_id)}>accept</button>
+                                <button
+                                    className="requests__container__received__btn"
+                                >deny</button>
                             </div>
                         ))
                     )

@@ -1,26 +1,23 @@
 import { useState } from "react";
 import FriendRequests from "./FriendRequests";
 import GroupRequests from "./GroupRequests";
-import SideBarHeader from "../sideBarComponents/SideBarHeader";
 
-// interface RequestsProps {
-//     showRequests: boolean;
-// }
 
-const Requests = (/*{ showRequests }: RequestsProps*/) => {
+const Requests = () => {
     const [showGroupRequests, setShowGroupRequests] = useState(false);
     return (
         <div className="nav__requests">
             <div className="nav__requests__header">
-                <SideBarHeader setIsGroups={setShowGroupRequests} isGroups={showGroupRequests} headerOne={"Friends"} headerTwo={"Groups"} rootClassName={"nav"} />
-                {/* <p
+                <p
                     className="nav__requests__header__btn"
+                    style={{ fontWeight: showGroupRequests ? "normal" : "bold" }}
                     onClick={() => setShowGroupRequests(false)}
                 >Friends</p>
                 <p
                     className="nav__requests__header__btn"
+                    style={{ fontWeight: showGroupRequests ? "bold" : "normal" }}
                     onClick={() => setShowGroupRequests(true)}
-                >Groups</p> */}
+                >Groups</p>
             </div>
             <div className="nav__requests__container">
                 {showGroupRequests ?

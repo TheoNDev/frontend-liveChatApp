@@ -8,9 +8,12 @@ const FriendSettings = ({ item }: FriendSettingsProps) => {
 
     const friend = item;
     return (
-        <>
-            {friend}
-        </>
+        <div>
+            {friend.username}
+            <button>
+                unfriend
+            </button>
+        </div>
     );
 };
 

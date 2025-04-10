@@ -1,6 +1,7 @@
 import { ChangeEvent, useEffect, useState } from "react";
 import axios from "../../utils/axios";
 import { useAuthContext } from "../../hooks/useAuthContext";
+import "../../styles/requests.scss";
 
 interface IRequests {
     id: number;
@@ -81,23 +82,27 @@ const FriendRequests = () => {
 
     }
     return (
-        <div>
-            <div>
-                <select value={requestsSelect} onChange={handleRequestSelect}>
+        <div className="requests">
+            <div className="requests__header">
+                <select
+                    className="requests__header__select"
+                    value={requestsSelect} onChange={handleRequestSelect}>
                     <option value="Received">Received</option>
                     <option value="Sent">Sent</option>
                 </select>
 
             </div>
-            <div>
+            <div className="requests__container">
                 {showRequestsSent ? (
                     fromUserError ? (
                         <p>{fromUserError}</p>
                     ) : (
                         requestsFromUser.map((request) => (
-                            <div key={request.id}>
-                                <p>{request.username}</p>
-                                <p>{request.status}</p>
+                            <div
+                                className="requests__container__sent"
+                                key={request.id}>
+                                <p className="requests__container__user">{request.username}</p>
+                                <p className="requests__container__status">{request.status}</p>
                             </div>
                         ))
                     )
@@ -106,10 +111,16 @@ const FriendRequests = () => {
                         <p>{toUserError}</p>
                     ) : (
                         requestsToUser.map((request) => (
-                            <div key={request.id}>
-                                <p>{request.username}</p>
-                                <button onClick={() => handleAcceptRequest(request.id)}>accept</button>
-                                <button>deny</button>
+                            <div
+                                className="requests__container__received"
+                                key={request.id} >
+                                <p className="requests__container__user" >{request.username}</p>
+                                <button
+                                    className="requests__container__btn"
+                                    onClick={() => handleAcceptRequest(request.id)}>accept</button>
+                                <button
+                                    className="requests__container__btn"
+                                >deny</button>
                             </div>
                         ))
                     )

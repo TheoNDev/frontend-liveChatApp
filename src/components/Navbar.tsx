@@ -4,6 +4,9 @@ import { useState } from "react";
 import Requests from "./navBarComponents/Requests";
 
 
+
+
+
 const Navbar = () => {
     const [showRequests, setShowRequests] = useState(false);
     const { logout } = useAuthContext();
@@ -16,6 +19,7 @@ const Navbar = () => {
                 style={{ cursor: "pointer" }}
                 onClick={() => setShowRequests(!showRequests)}>Requests</p>
             {showRequests && <Requests /*showRequests={showRequests}*/ />}
+
             <p className="nav__title">Chat</p>
 
             <p
