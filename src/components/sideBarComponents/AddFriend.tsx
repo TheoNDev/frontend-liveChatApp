@@ -12,7 +12,7 @@ const AddFriend = () => {
         try {
             const response = await axios.post("/friend/finduser", { username }, { withCredentials: true })
             const friendRequestData = {
-                sender_id: user?.id,
+                sender_id: user.id,
                 receiver_id: response.data.user[0].id
             }
             await axios.post("/friend/send", friendRequestData, { withCredentials: true })

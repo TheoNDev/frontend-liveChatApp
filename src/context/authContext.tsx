@@ -1,6 +1,7 @@
 import { createContext, useState, ReactNode, useEffect } from 'react';
 import { IFriend, IGroup, IUser } from '../types/IUser';
 import axios from '../utils/axios';
+import socket from '../utils/socket';
 
 
 
@@ -48,7 +49,6 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
         setIsAuthenticated(false)
     };
 
-
     const fetchUserData = async () => {
         try {
             setLoading(true)
@@ -58,6 +58,9 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
             setFriends(response.data.friends)
             setGroups(response.data.groups)
             setIsAuthenticated(true)
+            socket.emit("join_user", userData.id);
+
+
             console.log("data:", userData);
         } catch (error) {
             console.error("Error fetching user:", error);
@@ -82,6 +85,7 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
 
     useEffect(() => {
         fetchUserDataOnLogin();
+
     }, [user]);
 
 

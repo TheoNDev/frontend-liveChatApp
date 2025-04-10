@@ -29,7 +29,7 @@ const r = createBrowserRouter([
 
             },
             {
-                path: "/chat/dm/:friendId",
+                path: "/chat/friend/:friendId",
                 element:
                     <ProtectedRoute>
                         <Chat roomType={"dm"} />

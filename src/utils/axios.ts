@@ -3,7 +3,7 @@ import axios from "axios";
 axios.defaults.withCredentials = true;
 
 const axiosInstance = axios.create({
-  baseURL: "http://localhost:3000",
+  baseURL: "https://backend-livechatapp-production.up.railway.app",
   headers: {
     "Content-Type": "application/json",
   },

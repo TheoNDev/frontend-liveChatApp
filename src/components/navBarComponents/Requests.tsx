@@ -3,11 +3,11 @@ import FriendRequests from "./FriendRequests";
 import GroupRequests from "./GroupRequests";
 import SideBarHeader from "../sideBarComponents/SideBarHeader";
 
-interface RequestsProps {
-    showRequests: boolean;
-}
+// interface RequestsProps {
+//     showRequests: boolean;
+// }
 
-const Requests = ({ showRequests }: RequestsProps) => {
+const Requests = (/*{ showRequests }: RequestsProps*/) => {
     const [showGroupRequests, setShowGroupRequests] = useState(false);
     return (
         <div className="nav__requests">

@@ -15,7 +15,7 @@ const Navbar = () => {
                 className="nav__title"
                 style={{ cursor: "pointer" }}
                 onClick={() => setShowRequests(!showRequests)}>Requests</p>
-            {showRequests && <Requests showRequests={showRequests} />}
+            {showRequests && <Requests /*showRequests={showRequests}*/ />}
             <p className="nav__title">Chatter</p>
 
             <p
