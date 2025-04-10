@@ -16,7 +16,7 @@ const Navbar = () => {
                 style={{ cursor: "pointer" }}
                 onClick={() => setShowRequests(!showRequests)}>Requests</p>
             {showRequests && <Requests /*showRequests={showRequests}*/ />}
-            <p className="nav__title">Chatter</p>
+            <p className="nav__title">Chat</p>
 
             <p
                 style={{ cursor: "pointer" }}
