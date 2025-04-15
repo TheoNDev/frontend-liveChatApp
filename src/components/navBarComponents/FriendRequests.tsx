@@ -2,6 +2,7 @@ import { ChangeEvent, useEffect, useState } from "react";
 import axios from "../../utils/axios";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import "../../styles/requests.scss";
+import socket from "../../utils/socket";
 
 interface IRequests {
     id: number;
@@ -17,7 +18,7 @@ const FriendRequests = () => {
     const [showRequestsSent, setShowRequestsSent] = useState(false);
     const [requestsSelect, setRequestsSelect] = useState("Received");
 
-    const { user } = useAuthContext();
+    const { user, setFriends } = useAuthContext();
 
     useEffect(() => {
         if (!user?.id) return;
@@ -79,6 +80,14 @@ const FriendRequests = () => {
 
         const response = await axios.post("/friend/accept", requestData, { withCredentials: true })
         console.log(response.data);
+        if (response.status === 200) {
+            setRequestsToUser((prevRequests) => prevRequests.filter((request) => request.id !== sender_id));
+            setFriends((prevFriends) => [...prevFriends, response.data.friend]);
+            socket.emit("accept_friend_request", {
+                sender_id: sender_id,
+                receiver_id: user.id,
+            });
+        }
 
     }
     return (

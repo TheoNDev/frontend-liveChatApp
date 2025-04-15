@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "../../utils/axios";
 import { useAuthContext } from "../../hooks/useAuthContext";
+import socket from "../../utils/socket";
 
 const AddFriend = () => {
     const [username, setUsername] = useState("");
@@ -17,7 +18,9 @@ const AddFriend = () => {
             }
             await axios.post("/friend/send", friendRequestData, { withCredentials: true })
             setShowAddFriend(false)
-
+            socket.emit("friend_request_sent", {
+                receiver_id: response.data.user[0].id,
+            });
         } catch (error) {
             console.log(error);
         }

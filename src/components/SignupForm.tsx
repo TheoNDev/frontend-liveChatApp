@@ -29,7 +29,7 @@ const SignupForm = ({ onSignupSuccess }: SignupFormProps) => {
             }
             const response = await axios.post("/auth/signup", userData, { withCredentials: true })
             console.log(response.data);
-            login(response.data.token.user)
+            login(response.data.user)
             onSignupSuccess();
 
         } catch (error) {

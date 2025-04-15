@@ -6,6 +6,8 @@ import socket from '../utils/socket';
 
 
 interface authContextProps {
+    setFriends: React.Dispatch<React.SetStateAction<IFriend[]>>;
+    setGroups: React.Dispatch<React.SetStateAction<IGroup[]>>;
     friends: IFriend[];
     groups: IGroup[];
     user: IUser;
@@ -28,10 +30,11 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
     const [loading, setLoading] = useState<boolean>(true);
     const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-    const login = (userData: IUser) => {
+    const login = async (userData: IUser) => {
         console.log("This is the users data: ", userData);
+        await fetchUserDataOnLogin();
         setUser(userData)
-
+        socket.emit("join_user", userData.id);
     }
     const logout = async () => {
         try {
@@ -83,11 +86,6 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
         }
     };
 
-    useEffect(() => {
-        fetchUserDataOnLogin();
-
-    }, [user]);
-
 
     useEffect(() => {
         fetchUserData();
@@ -103,6 +101,8 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
     return (
         <authContext.Provider
             value={{
+                setFriends,
+                setGroups,
                 friends,
                 groups,
                 user,
